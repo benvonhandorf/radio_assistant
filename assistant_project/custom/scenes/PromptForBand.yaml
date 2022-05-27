@@ -1,0 +1,48 @@
+# slots:
+# - commitBehavior:
+#     writeSessionParam: band
+#   name: band
+#   promptSettings:
+#     initialPrompt:
+#       staticPrompt:
+#         candidates:
+#         - promptResponse:
+#             firstSimple:
+#               variants:
+#               - speech: Which band are you interested in?
+#   required: true
+#   type:
+#     name: band_option
+onEnter:
+  staticPrompt:
+    candidates: 
+    - promptResponse: 
+        firstSimple:
+          variants:
+          - speech: Which band are you interested in?
+
+intentEvents:
+  - intent: band_selection
+    transitionToScene: SingleBandStatus
+    # handler:
+    #   staticPrompt:
+    #     candidates:
+    #     - promptResponse:
+    #         firstSimple:
+    #           variants:
+    #           - speech: The $intent.params.band.original meter band is doing OK right now.
+    #         lastSimple:
+    #           variants:
+    #           - speech: Want to check another band?
+  
+# conditionalEvents:
+#   - condition: scene.slots.status == "FINAL"
+#     handler:
+#       staticPrompt:
+#         candidates:
+#         - promptResponse:
+#             firstSimple:
+#               variants:
+#               - speech: Looking at the $intent.params.band meter band
+
+  

@@ -1,0 +1,20 @@
+synonym:
+  entities:
+    "20":
+      synonyms:
+      - twenty
+      - 20 meters
+      - 14 megahertz
+    "40":
+      synonyms:
+      - forty
+      - 40 meters
+      - 7 megahertz
+    "80":
+      synonyms:
+      - eighty
+      - 80 meters
+      - 3.5 megahertz
+  matchType: EXACT_MATCH
+
+

@@ -1,0 +1,7 @@
+parameters:
+  - name: band
+    type:
+      name: band_option
+trainingPhrases:
+  - ($band '20' auto=true)
+  - ($band '20' auto=true) band

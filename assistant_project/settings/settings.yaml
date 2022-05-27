@@ -1,0 +1,11 @@
+defaultLocale: en
+localizedSettings:
+  displayName: Band Status
+  fullDescription: Uses WSPR spots to determine how active the ham bands are.
+  pronunciation: Band Status
+  sampleInvocations:
+  - Talk to Band Status
+  - How are the bands?
+  shortDescription: Reports on the status of the amateur radio bands
+  voice: female_1
+projectId: band-monitor-da922
