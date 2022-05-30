@@ -22,3 +22,9 @@ output "data_writer_user" {
     value = "${aws_iam_access_key.data_writer.id} : ${aws_iam_access_key.data_writer.secret}"
     sensitive = true
 }
+
+output "api_uri" {
+    description = "Webhook invocation uri"
+    value = aws_apigatewayv2_stage.lambda.invoke_url
+}
+
