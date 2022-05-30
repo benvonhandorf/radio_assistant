@@ -20,10 +20,16 @@ onEnter:
         firstSimple:
           variants:
           - speech: Which band are you interested in?
+        suggestions:
+        # - title: All
+        - title: "20"
+        - title: "40"
 
 intentEvents:
   - intent: band_selection
-    transitionToScene: SingleBandStatus
+    handler: 
+      webhookHandler: handle_band_selection
+
     # handler:
     #   staticPrompt:
     #     candidates:

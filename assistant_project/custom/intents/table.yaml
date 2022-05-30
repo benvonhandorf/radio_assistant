@@ -1,5 +1,0 @@
-trainingPhrases:
-- TableCard
-- ($prompts1 'Table' auto=true) card
-- ($prompts1 'table' auto=true)
-- ($prompts1 'Table' auto=true)

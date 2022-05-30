@@ -7,7 +7,21 @@ def main(event, context):
 
     print(context)
 
-    result = {'response': f'Hello.  The time is now {datetime.datetime.now()}'}
+    request = json.loads(event['body'])
+
+    result = {
+        'session': request['session'],
+        'prompt': {
+            'firstSimple': {
+                'speech': 'That beam came from AWS Lambda!'
+            }
+        },
+        'scene': {
+            'next': {
+                'name': 'PromptForBand'
+            }
+        }
+    }
 
     return {
         'statusCode': 200,

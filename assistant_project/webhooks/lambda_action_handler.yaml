@@ -1,0 +1,4 @@
+handlers:
+- name: "handle_band_selection"
+httpsEndpoint: 
+  baseUrl: "https://dmnzf0zimi.execute-api.us-east-2.amazonaws.com/webhook_stage/handler"
