@@ -14,5 +14,5 @@ def main(event, context):
         'headers': {
             'Content-Type': 'application/json'
         },
-        'body': result
+        'body': json.dumps(result)
     }
