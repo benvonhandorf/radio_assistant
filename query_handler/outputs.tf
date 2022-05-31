@@ -8,7 +8,7 @@
 
 output "zip_md5" {
     description = "MD5 of lambda archive"
-    value = filemd5(data.archive_file.lambda_query_handler.output_path)
+    value = filemd5(local.lambda_archive_path)
 }
 
 output "data_reader_user" {

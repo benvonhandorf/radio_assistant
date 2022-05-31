@@ -170,23 +170,55 @@ resource "aws_s3_bucket_policy" "data_bucket_policy" {
 
 ## Lambda Programming
 
-data "archive_file" "lambda_query_handler" {
-  type = "zip"
+# data "archive_file" "lambda_query_handler" {
+#   type = "zip"
 
-  source_dir = "${path.module}/lambda"
-  output_path = "${path.module}/lambda.zip"
+#   source_dir = "${path.module}/lambda"
+#   output_path = "${path.module}/lambda.zip"
+# }
+
+locals {
+  # Common tags to be assigned to all resources
+  lambda_archive_path = abspath("${path.module}/lambda.zip")
+}
+
+resource "null_resource" "lambda_query_handler_archive" {
+  triggers = {
+    always_run = timestamp()
+  }
+
+  provisioner "local-exec" {
+    command = <<EOT
+      rm ${local.lambda_archive_path}
+      zip ${local.lambda_archive_path} *.py
+      cd env/lib/python3.9/site-packages
+      zip -r ${local.lambda_archive_path} *
+    EOT
+
+    interpreter = ["/bin/bash", "-c"]
+    working_dir = abspath("${path.module}/lambda")
+  }
 }
 
 resource "aws_s3_object" "lambda_code" {
+  depends_on = [
+    null_resource.lambda_query_handler_archive,
+  ]
+
   bucket = aws_s3_bucket.lambda_bucket.id
 
   key    = "lambda.zip"
-  source = data.archive_file.lambda_query_handler.output_path
+  source = "${path.module}/lambda.zip"
 
-  etag = filemd5(data.archive_file.lambda_query_handler.output_path)
+  etag = filemd5(local.lambda_archive_path )
 }
 
 resource "aws_lambda_function" "lambda_function" {
+  depends_on = [
+    aws_s3_object.lambda_code,
+    null_resource.lambda_query_handler_archive,
+  ]
+
   function_name = "RadioAssistantRequestHandler"
 
   s3_bucket = aws_s3_bucket.lambda_bucket.id
@@ -195,7 +227,7 @@ resource "aws_lambda_function" "lambda_function" {
   runtime = "python3.9"
   handler = "main.main"
 
-  source_code_hash = data.archive_file.lambda_query_handler.output_base64sha256
+  source_code_hash = filebase64sha256(local.lambda_archive_path)
 
   role = aws_iam_role.lambda_exec.arn
 }
