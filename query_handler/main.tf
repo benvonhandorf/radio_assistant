@@ -182,29 +182,7 @@ locals {
   lambda_archive_path = abspath("${path.module}/lambda.zip")
 }
 
-resource "null_resource" "lambda_query_handler_archive" {
-  triggers = {
-    always_run = timestamp()
-  }
-
-  provisioner "local-exec" {
-    command = <<EOT
-      rm ${local.lambda_archive_path}
-      zip ${local.lambda_archive_path} *.py
-      cd env/lib/python3.9/site-packages
-      zip -r ${local.lambda_archive_path} *
-    EOT
-
-    interpreter = ["/bin/bash", "-c"]
-    working_dir = abspath("${path.module}/lambda")
-  }
-}
-
 resource "aws_s3_object" "lambda_code" {
-  depends_on = [
-    null_resource.lambda_query_handler_archive,
-  ]
-
   bucket = aws_s3_bucket.lambda_bucket.id
 
   key    = "lambda.zip"
@@ -214,11 +192,6 @@ resource "aws_s3_object" "lambda_code" {
 }
 
 resource "aws_lambda_function" "lambda_function" {
-  depends_on = [
-    aws_s3_object.lambda_code,
-    null_resource.lambda_query_handler_archive,
-  ]
-
   function_name = "RadioAssistantRequestHandler"
 
   s3_bucket = aws_s3_bucket.lambda_bucket.id

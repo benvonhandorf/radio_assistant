@@ -21,14 +21,17 @@ onEnter:
           variants:
           - speech: Which band are you interested in?
         suggestions:
-        # - title: All
+        - title: All
         - title: "20"
         - title: "40"
 
 intentEvents:
   - intent: band_selection
     handler: 
-      webhookHandler: handle_band_selection
+      webhookHandler: describe_band_status
+  - intent: all_band_status
+    handler: 
+      webhookHandler: all_band_status
 
     # handler:
     #   staticPrompt:
