@@ -1,3 +1,15 @@
+intentEvents:
+- handler:
+    staticPrompt:
+      candidates:
+      - promptResponse:
+          firstSimple:
+            variants:
+            - speech: $intent.params.band.original is doing OK right now.
+          lastSimple:
+            variants:
+            - speech: Want to check another band?
+  intent: band_selection
 onEnter:
   staticPrompt:
     candidates:
@@ -8,16 +20,3 @@ onEnter:
         lastSimple:
           variants:
           - speech: Want to check another band?
-
-intentEvents:
-  - intent: band_selection
-    handler:
-      staticPrompt:
-        candidates:
-        - promptResponse:
-            firstSimple:
-              variants:
-              - speech: $intent.params.band.original is doing OK right now.
-            lastSimple:
-              variants:
-              - speech: Want to check another band?

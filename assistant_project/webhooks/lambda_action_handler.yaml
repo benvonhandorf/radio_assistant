@@ -1,5 +1,5 @@
 handlers:
 - name: describe_band_status
 - name: all_band_status
-httpsEndpoint: 
-  baseUrl: "https://dmnzf0zimi.execute-api.us-east-2.amazonaws.com/webhook_stage/handler"
+httpsEndpoint:
+  baseUrl: https://dmnzf0zimi.execute-api.us-east-2.amazonaws.com/webhook_stage/handler

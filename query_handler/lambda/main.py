@@ -27,7 +27,11 @@ def main(event, context):
 
     request = json.loads(event['body'])
 
-    intent_path = parse('intent.name')
+    session_path = parse('$..session')
+
+    session_id = session_path.find(request)[0].value
+
+    intent_path = parse('$..intent.name')
     
     intent = intent_path.find(request)[0].value
 
@@ -43,21 +47,23 @@ def main(event, context):
         if band_results:
             band = band_results[0].value
 
-            response_speech = f'{band["band"]} is currently {band["status"]}'
+            response_speech = f'{band["band"]} is currently {band["status"]}.'
         else:
-            response_speech = f'I don\'t have any information for {band_string}'
+            response_speech = f'I don\'t have any information for {band_string}.'
 
 
     elif intent == "all_band_status":
-        band_results = parse(f'bands').find(band_status_info)
+        band_results = parse(f'bands[*]').find(band_status_info)
 
-        band_summary = ','.join([f'{band["band"]} is {band["status"]}' for band in band_results])
+        if band_results:
+            band_summary = '  '.join([f'{band.value["band"]} is {band.value["status"]}.' for band in band_results])
 
-
-        response_speech = f'Right now, {band_summary}'
+            response_speech = f'Right now, {band_summary}'
+        else:
+            response_speech = f'I\'m afraid I can\'t tell right now.'
 
     result = {
-        'session': request['session'],
+        'session': session_id,
         'prompt': {
             'firstSimple': {
                  'speech': response_speech
@@ -79,12 +85,12 @@ def main(event, context):
     }
 
 if __name__ == "__main__":    
-    with open('sample_request.json', 'r') as sample_file:
+    with open('sample_request_all.json', 'r') as sample_file:
         input_json = json.load(sample_file)
 
     test_context = {}
 
-    aws_session = boto3.Session(profile_name='radio_assistant_reader')
+    aws_session = boto3.Session(profile_name='radio_assistant_admin')
     s3_client = aws_session.client('s3')
     
     result = main(input_json, test_context)
