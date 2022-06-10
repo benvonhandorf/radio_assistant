@@ -6,11 +6,11 @@
         "name": "band_selection",
         "params": {
             "band": {
-                "original": "17",
-                "resolved": "17"
+                "original": "20",
+                "resolved": "20"
             }
         },
-        "query": "17"
+        "query": "20"
     },
     "scene": {
         "name": "PromptForBand",
