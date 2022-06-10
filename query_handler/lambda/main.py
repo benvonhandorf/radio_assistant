@@ -92,7 +92,10 @@ def main(event, context):
         print(f'Response: {response_speech} {session_id}')
 
         result = {
-            'session': session_id,
+            'session': {
+                'id' : session_id,
+                'params': {}
+            }, 
             'prompt': {
                 'firstSimple': {
                     'speech': response_speech
