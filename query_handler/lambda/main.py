@@ -51,26 +51,23 @@ def main(event, context):
 
             print(f'Band selection: {band_string}')
 
-            # ?(@.band=='{band_string}')
+            band_path = f"$..bands[?(@.band=='{band_string}')]"
 
-            # band_path = f"$..bands[0]"
+            print(f'Band string: {band_path}')
 
-            # print(f'Band string: {band_path}')
+            parsed_path = parse(band_path)
 
-            # parsed_path = parse(band_path)
+            print(f'Parsed path: {parsed_path}')
 
-            # print(f'Parsed path: {parsed_path}')
+            band_results = parsed_path.find(band_status_info)
 
-            # band_results = parsed_path.find(band_status_info)
-
-            band_results = [{"value": band_status_info["bands"][0]}]
 
             print(f'Band Results: {band_results}')
 
             if band_results:
                 print(f'Found band results')
 
-                band = band_results[0]['value']
+                band = band_results[0].value
 
                 print(f'Band Info: {band}')
 
@@ -117,8 +114,8 @@ def main(event, context):
             },
             'body': json.dumps(result)
         }
-    except Exception as exception:
-        print(f'Unable to process request: {exception}')
+    except Exception as e:
+        print(f'Unable to process request: {e}')
 
 if __name__ == "__main__":    
     with open('sample_request.json', 'r') as sample_file:

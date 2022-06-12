@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/benvh/projects/radio_assistant'
+make: Leaving directory '/home/benvh/projects/radio_assistant'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
