@@ -200,6 +200,8 @@ resource "aws_lambda_function" "lambda_function" {
   runtime = "python3.9"
   handler = "main.main"
 
+  timeout = 5
+
   source_code_hash = filebase64sha256(local.lambda_archive_path)
 
   role = aws_iam_role.lambda_exec.arn
