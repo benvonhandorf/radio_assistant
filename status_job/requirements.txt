@@ -4,9 +4,11 @@ certifi==2022.5.18.1
 ciso8601==2.2.0
 influxdb-client==1.29.1
 jmespath==1.0.0
+plotly==5.8.2
 python-dateutil==2.8.2
 pytz==2022.1
 Rx==3.2.0
 s3transfer==0.6.0
 six==1.16.0
+tenacity==8.0.1
 urllib3==1.26.9
