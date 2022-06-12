@@ -1,0 +1,83 @@
+{
+    "version": "1.0",
+    "resource": "/handler",
+    "path": "/webhook_stage/handler",
+    "httpMethod": "POST",
+    "headers": {
+        "Content-Length": "1061",
+        "Content-Type": "application/json",
+        "Host": "dmnzf0zimi.execute-api.us-east-2.amazonaws.com",
+        "User-Agent": "curl/7.79.1",
+        "X-Amzn-Trace-Id": "Root=1-62995260-65ce82fd63df16ba62f91b7a",
+        "X-Forwarded-For": "72.49.158.184",
+        "X-Forwarded-Port": "443",
+        "X-Forwarded-Proto": "https",
+        "accept": "*/*"
+    },
+    "multiValueHeaders": {
+        "Content-Length": [
+            "1061"
+        ],
+        "Content-Type": [
+            "application/json"
+        ],
+        "Host": [
+            "dmnzf0zimi.execute-api.us-east-2.amazonaws.com"
+        ],
+        "User-Agent": [
+            "curl/7.79.1"
+        ],
+        "X-Amzn-Trace-Id": [
+            "Root=1-62995260-65ce82fd63df16ba62f91b7a"
+        ],
+        "X-Forwarded-For": [
+            "72.49.158.184"
+        ],
+        "X-Forwarded-Port": [
+            "443"
+        ],
+        "X-Forwarded-Proto": [
+            "https"
+        ],
+        "accept": [
+            "*/*"
+        ]
+    },
+    "queryStringParameters": null,
+    "multiValueQueryStringParameters": null,
+    "requestContext": {
+        "accountId": "204795710186",
+        "apiId": "dmnzf0zimi",
+        "domainName": "dmnzf0zimi.execute-api.us-east-2.amazonaws.com",
+        "domainPrefix": "dmnzf0zimi",
+        "extendedRequestId": "THnPGgQhiYcEP2A=",
+        "httpMethod": "POST",
+        "identity": {
+            "accessKey": null,
+            "accountId": null,
+            "caller": null,
+            "cognitoAmr": null,
+            "cognitoAuthenticationProvider": null,
+            "cognitoAuthenticationType": null,
+            "cognitoIdentityId": null,
+            "cognitoIdentityPoolId": null,
+            "principalOrgId": null,
+            "sourceIp": "72.49.158.184",
+            "user": null,
+            "userAgent": "curl/7.79.1",
+            "userArn": null
+        },
+        "path": "/webhook_stage/handler",
+        "protocol": "HTTP/1.1",
+        "requestId": "THnPGgQhiYcEP2A=",
+        "requestTime": "03/Jun/2022:00:14:24 +0000",
+        "requestTimeEpoch": 1654215264428,
+        "resourceId": "POST /handler",
+        "resourcePath": "/handler",
+        "stage": "webhook_stage"
+    },
+    "pathParameters": null,
+    "stageVariables": null,
+    "body": "{    \"requestJson\": {      \"handler\": {        \"name\": \"all_band_status\"      },      \"intent\": {        \"name\": \"all_band_status\",        \"params\": {},        \"query\": \"All\"      },      \"scene\": {        \"name\": \"PromptForBand\",        \"slotFillingStatus\": \"UNSPECIFIED\",        \"slots\": {}      },      \"session\": {        \"id\": \"ABwppHHSzcaCW_Bf7mLU6JyQirFUYC3NJ_xK1HyiC946bKOlTaPX6HQJNZFewJ_xhqRxEoskCBV3H93AnaRc1q42\",        \"params\": {},        \"typeOverrides\": [],        \"languageCode\": \"\"      },      \"user\": {        \"locale\": \"en-US\",        \"params\": {},        \"accountLinkingStatus\": \"NOT_LINKED\",        \"verificationStatus\": \"VERIFIED\",        \"packageEntitlements\": [],        \"gaiamint\": \"\",        \"permissions\": [],        \"lastSeenTime\": \"2022-06-02T23: 52: 37Z\"      },      \"home\": {        \"params\": {}      },      \"device\": {        \"capabilities\": [          \"SPEECH\",          \"RICH_RESPONSE\",          \"LONG_FORM_AUDIO\"        ],        \"timeZone\": {          \"id\": \"America/New_York\",          \"version\": \"\"        }      }    }  }",
+    "isBase64Encoded": false
+}

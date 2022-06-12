@@ -1,0 +1,91 @@
+{
+    "version": "1.0",
+    "resource": "/handler",
+    "path": "/webhook_stage/handler",
+    "httpMethod": "POST",
+    "headers": {
+        "Content-Length": "720",
+        "Content-Type": "application/json;charset=UTF-8",
+        "Google-Actions-API-Version": "3",
+        "Google-Assistant-Signature": "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijc0ODNhMDg4ZDRmZmMwMDYwOWYwZTIyZjNjMjJkYTVmZTM5MDZjY2MiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhdWQiOiJiYW5kLW1vbml0b3ItZGE5MjIiLCJuYmYiOjE2NTUwMzY1NDEsImlhdCI6MTY1NTAzNjg0MSwiZXhwIjoxNjU1MDM2OTYxLCJqdGkiOiIyMmM4MGM3MDlkNTg4OWZlNWFhYTNhZDQwMjQyOWJiMzI0Njk5M2Q5In0.iqp75Pt3nmXA9qFqc1qADnJFc9iX1PMr7S3g8T91uyWkTuy1AWBUX2c3sdRQGg3hQhAPEtpxU2t9PI2fGoa4LHWyU9nUAFb3zaY5AHMlcefqHjgZy_PGjOSy0CSiOXKZ1FzYOQNmrfhUwrzW3v1zBYtBBnfVlGaTh--KpAmpvFKR2gNAz8E7dUMiRwZ6Lvj-JvjmAb1d2azpoegN37Z4VHQ-PAJ44D2EX04ckBhDRRJD5WUpAT2EWxenZ7U3MN079AmkDyUkR1eZfOZzrIKWiP--hflT9bIA-em1abZkxKQfD_hGTAUT8O4KGg06rFq7sw7gql2zA-RZKuKkpkfpdA",
+        "Host": "dmnzf0zimi.execute-api.us-east-2.amazonaws.com",
+        "User-Agent": "Google-ActionsOnGoogle/1.0",
+        "X-Amzn-Trace-Id": "Root=1-62a5dba9-5a87d2126108265a6b854e33",
+        "X-Forwarded-For": "66.249.83.95",
+        "X-Forwarded-Port": "443",
+        "X-Forwarded-Proto": "https",
+        "accept-encoding": "gzip, deflate, br"
+    },
+    "multiValueHeaders": {
+        "Content-Length": [
+            "720"
+        ],
+        "Content-Type": [
+            "application/json;charset=UTF-8"
+        ],
+        "Google-Actions-API-Version": [
+            "3"
+        ],
+        "Google-Assistant-Signature": [
+            "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijc0ODNhMDg4ZDRmZmMwMDYwOWYwZTIyZjNjMjJkYTVmZTM5MDZjY2MiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhdWQiOiJiYW5kLW1vbml0b3ItZGE5MjIiLCJuYmYiOjE2NTUwMzY1NDEsImlhdCI6MTY1NTAzNjg0MSwiZXhwIjoxNjU1MDM2OTYxLCJqdGkiOiIyMmM4MGM3MDlkNTg4OWZlNWFhYTNhZDQwMjQyOWJiMzI0Njk5M2Q5In0.iqp75Pt3nmXA9qFqc1qADnJFc9iX1PMr7S3g8T91uyWkTuy1AWBUX2c3sdRQGg3hQhAPEtpxU2t9PI2fGoa4LHWyU9nUAFb3zaY5AHMlcefqHjgZy_PGjOSy0CSiOXKZ1FzYOQNmrfhUwrzW3v1zBYtBBnfVlGaTh--KpAmpvFKR2gNAz8E7dUMiRwZ6Lvj-JvjmAb1d2azpoegN37Z4VHQ-PAJ44D2EX04ckBhDRRJD5WUpAT2EWxenZ7U3MN079AmkDyUkR1eZfOZzrIKWiP--hflT9bIA-em1abZkxKQfD_hGTAUT8O4KGg06rFq7sw7gql2zA-RZKuKkpkfpdA"
+        ],
+        "Host": [
+            "dmnzf0zimi.execute-api.us-east-2.amazonaws.com"
+        ],
+        "User-Agent": [
+            "Google-ActionsOnGoogle/1.0"
+        ],
+        "X-Amzn-Trace-Id": [
+            "Root=1-62a5dba9-5a87d2126108265a6b854e33"
+        ],
+        "X-Forwarded-For": [
+            "66.249.83.95"
+        ],
+        "X-Forwarded-Port": [
+            "443"
+        ],
+        "X-Forwarded-Proto": [
+            "https"
+        ],
+        "accept-encoding": [
+            "gzip, deflate, br"
+        ]
+    },
+    "queryStringParameters": null,
+    "multiValueQueryStringParameters": null,
+    "requestContext": {
+        "accountId": "204795710186",
+        "apiId": "dmnzf0zimi",
+        "domainName": "dmnzf0zimi.execute-api.us-east-2.amazonaws.com",
+        "domainPrefix": "dmnzf0zimi",
+        "extendedRequestId": "Tm9CkjaiCYcEJVg=",
+        "httpMethod": "POST",
+        "identity": {
+            "accessKey": null,
+            "accountId": null,
+            "caller": null,
+            "cognitoAmr": null,
+            "cognitoAuthenticationProvider": null,
+            "cognitoAuthenticationType": null,
+            "cognitoIdentityId": null,
+            "cognitoIdentityPoolId": null,
+            "principalOrgId": null,
+            "sourceIp": "66.249.83.95",
+            "user": null,
+            "userAgent": "Google-ActionsOnGoogle/1.0",
+            "userArn": null
+        },
+        "path": "/webhook_stage/handler",
+        "protocol": "HTTP/1.1",
+        "requestId": "Tm9CkjaiCYcEJVg=",
+        "requestTime": "12/Jun/2022:12:27:21 +0000",
+        "requestTimeEpoch": 1655036841853,
+        "resourceId": "POST /handler",
+        "resourcePath": "/handler",
+        "stage": "webhook_stage"
+    },
+    "pathParameters": null,
+    "stageVariables": null,
+    "body": "{\"handler\":{\"name\":\"describe_band_status\"},\"intent\":{\"name\":\"band_selection\",\"params\":{\"band\":{\"original\":\"20\",\"resolved\":\"20\"}},\"query\":\"20\"},\"scene\":{\"name\":\"PromptForBand\",\"slotFillingStatus\":\"UNSPECIFIED\",\"slots\":{}},\"session\":{\"id\":\"ABwppHGlIvWiR-AxEdOMhIcP6bayAYDtOlIm_4ydEMpq5XhtXv2Jm0_-pvBqOgB3ZK2bsZ8EFRK68UU9z4OMmEcK\",\"params\":{},\"typeOverrides\":[],\"languageCode\":\"\"},\"user\":{\"locale\":\"en-US\",\"params\":{},\"accountLinkingStatus\":\"NOT_LINKED\",\"verificationStatus\":\"VERIFIED\",\"packageEntitlements\":[],\"gaiamint\":\"\",\"permissions\":[],\"lastSeenTime\":\"2022-06-12T12:21:13Z\"},\"home\":{\"params\":{}},\"device\":{\"capabilities\":[\"SPEECH\",\"RICH_RESPONSE\",\"LONG_FORM_AUDIO\"],\"timeZone\":{\"id\":\"America/New_York\",\"version\":\"\"}}}",
+    "isBase64Encoded": false
+}

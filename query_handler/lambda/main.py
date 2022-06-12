@@ -1,17 +1,17 @@
 from asyncore import file_dispatcher
 import datetime
+
 import json
+from jsonpath_ng import jsonpath
 from jsonpath_ng.ext import parse
+
 import boto3
+import logging
 
-s3_client = None
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
 
-def get_band_status_info():
-    global s3_client
-
-    if not s3_client:
-        s3_client = boto3.client('s3')
-
+def get_band_status_info(s3_client):
     band_status_object = s3_client.get_object(Bucket='radio-assitant-data-free-moose', Key='band_status.json')
 
     file_contents = band_status_object['Body'].read()
@@ -20,13 +20,15 @@ def get_band_status_info():
 
     return band_status_info
 
-def main(event, context):
+def process_request(event, context, s3_client):
     try:
-        print(event)
-
-        print(context)
+        logging.debug(json.dumps(event))
 
         request = json.loads(event['body'])
+
+        logging.debug(json.dumps(request))
+
+        band_string_path =  parse('$..intent.params.band.resolved')
 
         session_path = parse('$..session.id')
 
@@ -36,40 +38,42 @@ def main(event, context):
         
         intent = intent_path.find(request)[0].value
 
-        print(f'Intent: {intent}')
+        logging.debug(f'Intent: {intent}')
 
         response_speech = ""
 
-        band_status_info = get_band_status_info()
+        band_status_info = get_band_status_info(s3_client)
 
-        print(f'Retrieved band status:{band_status_info}')
+        logging.debug(f'Retrieved band status:{band_status_info}')
 
         if intent == "band_selection":
-            print(f'Band selection')
+            logging.debug(f'Band selection')
 
-            band_string = parse('$..intent.params.band.resolved').find(request)[0].value
+            logging.debug(f'Band string path: {band_string_path}')
 
-            print(f'Band selection: {band_string}')
+            band_string = band_string_path.find(request)[0].value
+
+            logging.debug(f'Band selection: {band_string}')
 
             band_path = f"$..bands[?(@.band=='{band_string}')]"
 
-            print(f'Band string: {band_path}')
+            logging.debug(f'Band string: {band_path}')
 
             parsed_path = parse(band_path)
 
-            print(f'Parsed path: {parsed_path}')
+            logging.debug(f'Parsed path: {parsed_path}')
 
             band_results = parsed_path.find(band_status_info)
 
 
-            print(f'Band Results: {band_results}')
+            logging.debug(f'Band Results: {band_results}')
 
             if band_results:
-                print(f'Found band results')
+                logging.debug(f'Found band results')
 
                 band = band_results[0].value
 
-                print(f'Band Info: {band}')
+                logging.debug(f'Band Info: {band}')
 
                 response_speech = f'{band["band"]} is currently {band["status"]}.'
             else:
@@ -86,7 +90,7 @@ def main(event, context):
             else:
                 response_speech = f'I\'m afraid I can\'t tell right now.'
 
-        print(f'Response: {response_speech} {session_id}')
+        logging.info(f'Response: {response_speech} {session_id}')
 
         result = {
             'session': {
@@ -115,17 +119,9 @@ def main(event, context):
             'body': json.dumps(result)
         }
     except Exception as e:
-        print(f'Unable to process request: {e}')
+        logging.error(f'Unable to process request: {e}')
 
-if __name__ == "__main__":    
-    with open('sample_request.json', 'r') as sample_file:
-        input_json = json.load(sample_file)
-
-    test_context = {}
-
-    aws_session = boto3.Session(profile_name='radio_assistant_admin')
-    s3_client = aws_session.client('s3')
+def main(event, context):
+    s3_client = boto3.client('s3')
     
-    result = main(input_json, test_context)
-
-    print(json.dumps(result))
+    process_request(event, context, s3_client)

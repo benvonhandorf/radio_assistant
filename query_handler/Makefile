@@ -9,7 +9,6 @@ test_environment:
 
 test: lambda.zip test_environment
 	cd test_environment && \
-		unzip -o ../lambda.zip && \
-		cp ../lambda/sample_request*.json .
+		unzip -o ../lambda.zip
 
 FORCE: ;

@@ -1,0 +1,47 @@
+{
+    "requestJson": {
+      "handler": {
+        "name": "all_band_status"
+      },
+      "intent": {
+        "name": "all_band_status",
+        "params": {},
+        "query": "All"
+      },
+      "scene": {
+        "name": "PromptForBand",
+        "slotFillingStatus": "UNSPECIFIED",
+        "slots": {}
+      },
+      "session": {
+        "id": "ABwppHHSzcaCW_Bf7mLU6JyQirFUYC3NJ_xK1HyiC946bKOlTaPX6HQJNZFewJ_xhqRxEoskCBV3H93AnaRc1q42",
+        "params": {},
+        "typeOverrides": [],
+        "languageCode": ""
+      },
+      "user": {
+        "locale": "en-US",
+        "params": {},
+        "accountLinkingStatus": "NOT_LINKED",
+        "verificationStatus": "VERIFIED",
+        "packageEntitlements": [],
+        "gaiamint": "",
+        "permissions": [],
+        "lastSeenTime": "2022-06-02T23:52:37Z"
+      },
+      "home": {
+        "params": {}
+      },
+      "device": {
+        "capabilities": [
+          "SPEECH",
+          "RICH_RESPONSE",
+          "LONG_FORM_AUDIO"
+        ],
+        "timeZone": {
+          "id": "America/New_York",
+          "version": ""
+        }
+      }
+    }
+  }

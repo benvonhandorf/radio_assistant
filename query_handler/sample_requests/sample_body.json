@@ -1,0 +1,50 @@
+{
+    "handler": {
+        "name": "describe_band_status"
+    },
+    "intent": {
+        "name": "band_selection",
+        "params": {
+            "band": {
+                "original": "20",
+                "resolved": "20"
+            }
+        },
+        "query": "20"
+    },
+    "scene": {
+        "name": "PromptForBand",
+        "slotFillingStatus": "UNSPECIFIED",
+        "slots": {}
+    },
+    "session": {
+        "id": "ABwppHHloMvtiKXFLIMqLm5DUr9LxDMpWt6X8Jhbi-AqvwuLiLGXx10pXuNWOiRtJ4MgEWpppA1k2n3z8XfVdbHD",
+        "params": {},
+        "typeOverrides": [],
+        "languageCode": ""
+    },
+    "user": {
+        "locale": "en-US",
+        "params": {},
+        "accountLinkingStatus": "NOT_LINKED",
+        "verificationStatus": "VERIFIED",
+        "packageEntitlements": [],
+        "gaiamint": "",
+        "permissions": [],
+        "lastSeenTime": "2022-06-12T12:34:13Z"
+    },
+    "home": {
+        "params": {}
+    },
+    "device": {
+        "capabilities": [
+            "SPEECH",
+            "RICH_RESPONSE",
+            "LONG_FORM_AUDIO"
+        ],
+        "timeZone": {
+            "id": "America/New_York",
+            "version": ""
+        }
+    }
+}
