@@ -5,4 +5,6 @@ class BandAnalyzer():
         self.client = client
 
     def list_bands(self, timespan_minutes):
-        
+        """Returns a list of the bands seen in the last `timespan_minutes` minutes."""
+        pass
+
