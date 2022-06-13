@@ -67,8 +67,9 @@ if __name__ == "__main__":
         # ))
 
         figure = px.bar_polar(band_polar_data,
-            r="_value", 
+            r="distance", 
             theta="segment",
+            color="snr",
             template="plotly_dark",
             color_discrete_sequence= px.colors.sequential.Plasma_r)
 
