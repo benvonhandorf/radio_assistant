@@ -38,6 +38,8 @@ if __name__ == "__main__":
         help="InfluxDB Organization")
     argument_parser.add_argument('--aws_profile', default='radio_assistant_writer',
         help="AWS Profile")
+    argument_parser.add_argument('--duration', default=60, type=int,
+        help="Minutes of data to include")
 
     args = argument_parser.parse_args()
 
@@ -47,7 +49,7 @@ if __name__ == "__main__":
 
     band_analyzer = BandAnalyzer(query_api)
 
-    bands = band_analyzer.list_bands()
+    bands = band_analyzer.list_bands(timespan_minutes=args.duration)
 
     logging.info(f'Bands Found: {bands}')
 
@@ -56,9 +58,9 @@ if __name__ == "__main__":
     for band in bands:
         logging.info(f'Retrieving band {band}')
 
-        band_polar_data = band_analyzer.retrieve_band_polar_data(band)
+        band_polar_data = band_analyzer.retrieve_band_polar_data(band, timespan_minutes=args.duration)
 
-        logging.debug(band_polar_data)
+        logging.debug(band_polar_data.to_string())
 
         # figure.add_trace(go.Barpolar(band_polar_data,
         #     name = band,
@@ -67,7 +69,7 @@ if __name__ == "__main__":
         # ))
 
         figure = px.bar_polar(band_polar_data,
-            r="distance", 
+            r="distance_relative", 
             theta="segment",
             color="snr",
             template="plotly_dark",
